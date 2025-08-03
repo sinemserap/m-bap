@@ -1,0 +1,34 @@
+# ---------- I/O ---------- #
+bids_root: "../bids"            # relative to this YAML
+derivatives_root: "../derivatives"
+subjects: ["sub-01", "sub-02"]  # or [] to process *all* subjects found
+
+# ---------- Filtering ---------- #
+notch_freq: [50, 100]           # main and 1st harmonic
+high_pass: 1.0                  # Hz
+low_pass: 40.0                  # Hz
+resample_sfreq: 250             # Hz (≤ original)
+
+# ---------- Bad-channel detection ---------- #
+ransac_n_resample: 50           # Autoreject RANSAC iterations
+ransac_min_corr: 0.75
+ransac_threshold_k: 4.0         # lower = stricter
+
+# ---------- ASR ---------- #
+asr_cutoff: 20                  # std·σ threshold
+asr_window_len: 0.5             # seconds
+
+# ---------- ICA ---------- #
+ica_n_components: "auto"        # auto = n_good_ch − 1
+iclabel_remove: ["eye", "muscle", "heart", "line_noise"]
+iclabel_prob_thresh: 0.9
+
+# ---------- Epoching (optional) ---------- #
+make_epochs: false              # true if you want epoch + autoreject‑local
+events_tsv: "events.tsv"
+tmin: -0.2                      # s
+tmax: 0.8                       # s
+baseline: [-0.2, 0.0]           # s
+
+# ---------- Reporting ---------- #
+save_intermediate: false        # write *_filt.fif, *_asr.fif … to disk

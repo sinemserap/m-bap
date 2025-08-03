@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+derivatives/
+reports/
+.env/
+.venv/
