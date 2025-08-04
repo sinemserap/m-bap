@@ -4,4 +4,5 @@ import importlib
 
 
 def test_import():
-    assert importlib.import_module("code.pipeline") is not None
+    assert importlib.import_module("mbap.pipeline") is not None
+
